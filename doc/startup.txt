@@ -23,7 +23,11 @@ Downloading https://services.gradle.org/distributions/gradle-7.3.3-all.zip
 $ yarn ios
 
 (3) Push to GitHub
-(2.1) Create a new empty repository `jkrnts` in GitHub. (NO README, NO .gitignore, NOTHING!!!)
-(2.2) `cd jkrnts` and `git init` and `git add .` and `git commit -m 'initial'`
-(2.3) `git remote add origin https://github.com/<your-github-user-name>/<app-name>.git`
-(2.4) `git push -u origin master`
+(3.1) Create a new empty repository `jkrnts` in GitHub. (NO README, NO .gitignore, NOTHING!!!)
+(3.2) `cd jkrnts`
+(3.3) `git init`
+(3.4) `git add .`
+(3.5) `git commit -m 'initial'`
+(3.6) `git branch -M main`
+(3.7) `git remote add origin git@github.com:zjkuang/jkrnts.git`
+(3.8) `git push -u origin main`
