@@ -1,0 +1,29 @@
+(1) Create the new R/N app with TypeScript template
+$ npx --ignore-existing react-native init jkrnts --template react-native-template-typescript
+
+(2) Run
+$ cd jkrnts
+
+(2.1) Android
+$ yarn android
+////////////////////////////////////////////////////////////////////////////////
+Console output
+--------------------------------------------------------------------------------
+yarn run v1.22.17
+$ react-native run-android
+info Running jetifier to migrate libraries to AndroidX. You can disable it using "--no-jetifier" flag.
+Jetifier found 945 file(s) to forward-jetify. Using 12 workers...
+info JS server already running.
+info Installing the app...
+Downloading https://services.gradle.org/distributions/gradle-7.3.3-all.zip
+...............10%...............20%...............30%...............40%...............50%...............60%................70%...............80%...............90%...............100%
+////////////////////////////////////////////////////////////////////////////////
+
+(2.2) iOS
+$ yarn ios
+
+(3) Push to GitHub
+(2.1) Create a new empty repository `jkrnts` in GitHub. (NO README, NO .gitignore, NOTHING!!!)
+(2.2) `cd jkrnts` and `git init` and `git add .` and `git commit -m 'initial'`
+(2.3) `git remote add origin https://github.com/<your-github-user-name>/<app-name>.git`
+(2.4) `git push -u origin master`
