@@ -1,0 +1,7 @@
+(1) Languages
+(2) Themes
+(3) States/Models
+(4) UI framework
+(5) Sign-up/Sign-off, Sign-in/Sign-out
+(5) Push Notifications
+(6) Social Sign-up/Sign-in
