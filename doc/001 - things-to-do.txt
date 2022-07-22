@@ -1,6 +1,6 @@
-(1) Languages
-(2) Themes
-(3) States/Models
+(1) Themes -- done
+(2) States/Models
+(3) Languages
 (4) UI framework
 (5) Sign-up/Sign-off, Sign-in/Sign-out
 (5) Push Notifications
