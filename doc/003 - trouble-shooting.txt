@@ -1,0 +1,9 @@
+(1) `pod install` shows "Ignoring ffi-1.13.1 because its extensions are not built. Try: gem pristine ffi --version 1.13.1"
+
+// https://stackoverflow.com/a/65248326
+`gem install ffi --version 1.13.1 --user-install`
+Then add the installation path to mPATH variable: add this line to my ~/.zshrc:
+export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH
+
+(2) On Android device: "Unable to load script. Make sure you're either running Metro (run 'react-native start') or that your bundle 'index.android.bundle' is packaged correctly for release."
+`adb reverse tcp:8081 tcp:8081`

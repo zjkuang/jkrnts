@@ -1,0 +1,4 @@
+(1) mobx-state-tree, mobx-react-lite, async-storage, mst-persist
+`yarn add mobx mobx-state-tree mobx-react-lite @react-native-async-storage/async-storage mst-persist`
+`cd ios && pod install && cd ..`
+-- Note that async-storage has a bug working with MST so we turned to @react-native-async-storage/async-storage.
