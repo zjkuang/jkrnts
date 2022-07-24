@@ -17,20 +17,20 @@ export const App = () => {
       <View style={themedStyles(theme).baseView}>
         <View style={{flexDirection: 'row'}}>
           <Button
-            title={'English'}
+            title={'Eng-\nlish'}
             flavor={'ios-bordered'}
             onPress={() => {
               changeLanguage('en');
             }}
-            textProps={{numberOfLines: 1}}
+            textProps={{numberOfLines: 2}}
           />
           <Button
-            title={'中文'}
+            title={'中\n文'}
             flavor={'ios-bordered'}
             onPress={() => {
               changeLanguage('zh_CN');
             }}
-            textProps={{numberOfLines: 1}}
+            textProps={{numberOfLines: 2, style: {fontWeight: 'bold'}}}
           />
         </View>
         <Text style={themedStyles(theme).text}>{lStr('helloWorld')}</Text>

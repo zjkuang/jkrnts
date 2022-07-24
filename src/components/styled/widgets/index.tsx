@@ -9,8 +9,15 @@ import {
 import {useTheme} from '../../hooks';
 import {themedStyles} from './style';
 
-// TODO: observe theme change
-
+// Example
+// <Button
+//   title={'Submit\nForm'}
+//   flavor={'ios-bordered'}
+//   onPress={() => {
+//     submit();
+//   }}
+//   textProps={{numberOfLines: 2, style: {fontWeight: 'bold'}}}
+// />
 export type ButtonFlavor = 'ios-borderless' | 'ios-bordered' | 'plain';
 interface ButtonProps extends TouchableOpacityProps {
   title: string;
