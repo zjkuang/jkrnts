@@ -1,15 +1,25 @@
 import React from 'react';
-import {Text, TouchableOpacity, TextProps} from 'react-native';
+import {
+  Text,
+  TouchableOpacity,
+  StyleProp,
+  TextProps,
+  TouchableOpacityProps,
+} from 'react-native';
 
 // TODO: observe theme change
 
-interface ButtonProps extends TextProps {
+interface ButtonProps extends TouchableOpacityProps {
   title: string;
+  textStyle?: StyleProp<TextProps>;
+  textProps: TextProps;
 }
 export const Button = (props: ButtonProps) => {
   return (
-    <TouchableOpacity>
-      <Text {...props}>{props.title}</Text>
+    <TouchableOpacity {...props}>
+      <Text style={props.textStyle} {...props.textProps}>
+        {props.title}
+      </Text>
     </TouchableOpacity>
   );
 };
