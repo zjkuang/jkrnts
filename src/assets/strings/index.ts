@@ -1,20 +1,12 @@
 import i18next from 'i18next';
+import {translation_en} from './en';
+import {translation_zh_CN} from './zh_CN';
 
-interface Glossary {
+export interface Glossary {
   helloWorld: string;
   iHaveSomeChildren_one?: string;
   iHaveSomeChildren_other?: string;
 }
-
-const translation_en: Glossary = {
-  helloWorld: 'Hello, English world!',
-  iHaveSomeChildren_one: 'I have a child.',
-  iHaveSomeChildren_other: 'I have children.',
-};
-
-const translation_zh_CN: Glossary = {
-  helloWorld: '你好，中文世界!',
-};
 
 if (!i18next.isInitialized) {
   i18next.init({
@@ -31,6 +23,13 @@ if (!i18next.isInitialized) {
   });
   console.log('i18next initialized.');
 }
+
+export const isChinese = () => {
+  return i18next.language?.substring(0, 2) === 'zh';
+};
+export const isEnglish = () => {
+  return i18next.language?.substring(0, 2) === 'en';
+};
 
 export const changeLanguage = (language: string) => {
   i18next.changeLanguage(language);

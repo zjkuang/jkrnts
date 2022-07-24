@@ -1,8 +1,10 @@
+import React from 'react';
 import {changeLanguage} from '../../assets/strings';
-import {useRefresh} from './useRefresh';
 
-export const useChangeLanguage = (language: string) => {
-  const refresh = useRefresh();
-  changeLanguage(language);
-  refresh();
+export const useChangeLanguage = () => {
+  const [, setLang] = React.useState<string>();
+  return React.useCallback((language: string) => {
+    changeLanguage(language);
+    setLang(language);
+  }, []);
 };

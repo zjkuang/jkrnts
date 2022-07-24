@@ -1,22 +1,13 @@
 import React from 'react';
 import {SafeAreaView, StatusBar, Text, View} from 'react-native';
-import {lStr, changeLanguage as chgLang} from '../../assets/strings';
-import {useRefresh, useTheme} from '../hooks';
+import {lStr, isChinese} from '../../assets/strings';
+import {useChangeLanguage, useTheme} from '../hooks';
 import {Button} from '../styled';
 import {themedStyles} from './style';
 
 export const App = () => {
   const theme = useTheme();
-  const [disablePlural, setDisablePlural] = React.useState(false);
-
-  const refresh = useRefresh();
-  const changeLanguage = React.useCallback(
-    (language: string) => {
-      chgLang(language);
-      refresh();
-    },
-    [refresh],
-  );
+  const changeLanguage = useChangeLanguage();
 
   return (
     <SafeAreaView style={themedStyles(theme).safeArea}>
@@ -38,7 +29,6 @@ export const App = () => {
             onPress={() => {
               console.log('*** Setting en...');
               changeLanguage('en');
-              setDisablePlural(false);
             }}
             textProps={{numberOfLines: 1}}
           />
@@ -55,13 +45,12 @@ export const App = () => {
             onPress={() => {
               console.log('*** Setting zh_CN...');
               changeLanguage('zh_CN');
-              setDisablePlural(true);
             }}
             textProps={{numberOfLines: 1}}
           />
         </View>
         <Text style={themedStyles(theme).text}>{lStr('helloWorld')}</Text>
-        {!disablePlural && (
+        {!isChinese() && (
           <Text style={themedStyles(theme).text}>
             {lStr('iHaveSomeChildren', {count: 1})}
           </Text>
