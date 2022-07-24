@@ -5,6 +5,8 @@ export type Theme = 'dark' | 'light';
 
 export interface Colors {
   background: string;
+  border: string;
+  iOSButton: string;
   text: string;
 }
 

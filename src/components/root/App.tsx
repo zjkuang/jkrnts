@@ -17,33 +17,17 @@ export const App = () => {
       <View style={themedStyles(theme).baseView}>
         <View style={{flexDirection: 'row'}}>
           <Button
-            style={{
-              margin: 8,
-              borderWidth: 1,
-              borderColor: 'lightGray',
-              borderRadius: 6,
-              paddingHorizontal: 8,
-              paddingVertical: 2,
-            }}
             title={'English'}
+            flavor={'ios-bordered'}
             onPress={() => {
-              console.log('*** Setting en...');
               changeLanguage('en');
             }}
             textProps={{numberOfLines: 1}}
           />
           <Button
-            style={{
-              margin: 8,
-              borderWidth: 1,
-              borderColor: 'lightGray',
-              borderRadius: 6,
-              paddingHorizontal: 8,
-              paddingVertical: 2,
-            }}
             title={'中文'}
+            flavor={'ios-bordered'}
             onPress={() => {
-              console.log('*** Setting zh_CN...');
               changeLanguage('zh_CN');
             }}
             textProps={{numberOfLines: 1}}
