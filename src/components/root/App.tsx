@@ -30,7 +30,13 @@ export const App = () => {
             onPress={() => {
               changeLanguage('zh_CN');
             }}
-            textProps={{numberOfLines: 2, style: {fontWeight: 'bold'}}}
+            textProps={{
+              numberOfLines: 2,
+              style: {
+                fontWeight: 'bold',
+                color: 'red',
+              },
+            }}
           />
         </View>
         <Text style={themedStyles(theme).text}>{lStr('helloWorld')}</Text>

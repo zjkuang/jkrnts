@@ -2,7 +2,10 @@ import {StyleSheet} from 'react-native';
 import {colors, Theme} from '../../../themes';
 
 export const fixedStyles = StyleSheet.create({
-  //
+  centerizeContents: {
+    justifyContent: 'center', // along primary axis
+    alignItems: 'center', // along secondary axis
+  },
 });
 
 export const themedStyles = (theme: Theme) => {
