@@ -7,3 +7,7 @@ export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH
 
 (2) On Android device: "Unable to load script. Make sure you're either running Metro (run 'react-native start') or that your bundle 'index.android.bundle' is packaged correctly for release."
 `adb reverse tcp:8081 tcp:8081`
+
+(3) Running on iPad only shows an iphone size screen
+// https://stackoverflow.com/a/67933699/7455975
+Open your YOURPROJECT.xcworkspace in xcode. Choose your target, then on "General" tab, tick the "iPad" checkbox.

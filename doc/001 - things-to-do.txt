@@ -2,6 +2,8 @@
 (2) Languages -- done
 (3) States/Models
 (4) UI framework
-(5) Sign-up/Sign-off, Sign-in/Sign-out
-(5) Push Notifications
-(6) Social Sign-up/Sign-in
+(5) Prod/Staging
+(6) Sign-up/Sign-off, Sign-in/Sign-out
+(7) Push Notifications
+(8) Social Sign-up/Sign-in
+(9) Deep-links

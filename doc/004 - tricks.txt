@@ -1,0 +1,46 @@
+(1) Open Developer Menu on iOS Simulator
+⌘D (Command-D). If not working, try ⌘^Z (Command-Control-Z).
+
+(2) Change Metro port
+e.g. By default Metro starts at port 8081. But if you want to start a new metro serving another R/N app at the same time, you need to start them on a different port, say 8082.
+(2.0) Check if a port is free
+// https://stackoverflow.com/a/4421674/7455975
+`sudo lsof -nP -i4TCP:$PORT | grep LISTEN`
+  -- Remember to replace $PORT with a real one like 8082
+(2.1) Start Metro on port 8082
+`yarn start --port 8082`
+(2.2) Start your R/N app on your Simulator and change its ip/port to <ip>/8082
+(2.2.1) ⌘D (Command-D) (or Command-Control-Z if Command-D won't work.) to open Developer Menu.
+(2.2.2) Choose "Configure Bundler" from Developer Menu.
+(2.2.3) Input the local IP of your wifi network, and port 8082
+
+(3) Add items to Develop Menu
+
+// https://stackoverflow.com/a/68014411/7455975
+import { DevSettings } from 'react-native';
+  useEffect(() => {
+    DevSettings.addMenuItem('Toggle Storybook', () => {
+      // Perform your logic here
+    });
+  }, []);
+
+https://yarnpkg.com/package/react-native-dev-menu
+
+(4) `yarn ios` to specific Simulator
+
+// https://stackoverflow.com/a/37329896/7455975
+`npx react-native run-ios --simulator="iPhone 13"`
+(*) To list all available iOS devices:
+  `xcrun simctl list devices`
+(*) You might want to add a most frequently used yarn command to package.json "scripts":
+{
+  ...
+  "scripts": {
+    ...
+    "ios": "react-native run-ios",
+    "sim-iphone-13": "react-native run-ios --simulator \"iPhone 13\"",
+    ...
+  },
+  ...
+}
+And then you can `yarn sim-iphone-13`
