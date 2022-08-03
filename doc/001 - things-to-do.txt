@@ -4,6 +4,6 @@
 (4) UI framework
 (5) Prod/Staging
 (6) Sign-up/Sign-off, Sign-in/Sign-out
-(7) Push Notifications
+(7) Push Notifications + In-app messages
 (8) Social Sign-up/Sign-in
 (9) Deep-links
