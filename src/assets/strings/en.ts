@@ -1,4 +1,4 @@
-import {Glossary} from '.';
+import {Glossary} from './glossary';
 
 export const translation_en: Glossary = {
   helloWorld: 'Hello, English world!',

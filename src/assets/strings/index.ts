@@ -2,12 +2,6 @@ import i18next from 'i18next';
 import {translation_en} from './en';
 import {translation_zh_CN} from './zh_CN';
 
-export interface Glossary {
-  helloWorld: string;
-  iHaveSomeChildren_one?: string;
-  iHaveSomeChildren_other?: string;
-}
-
 if (!i18next.isInitialized) {
   i18next.init({
     lng: 'en', // if you're using a language detector, do not define the lng option
