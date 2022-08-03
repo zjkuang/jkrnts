@@ -1,0 +1,7 @@
+(1) Do not use 'moment', use 'date-fns'
+
+(2) RNSVG
+
+(3) react-native-text-input-mask
+
+(4) yup

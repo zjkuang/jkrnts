@@ -42,7 +42,7 @@ export const App = () => {
         <Text style={themedStyles(theme).text}>{lStr('helloWorld')}</Text>
         {!isChinese() && (
           <Text style={themedStyles(theme).text}>
-            {lStr('iHaveSomeChildren', {count: 1})}
+            {lStr('iHaveSomeChildren', {count: 2})}
           </Text>
         )}
       </View>

@@ -1,20 +1,27 @@
-(1) Open Developer Menu on iOS Simulator
+////////////////////////////////////////
+Open Developer Menu on iOS Simulator
 ⌘D (Command-D). If not working, try ⌘^Z (Command-Control-Z).
 
-(2) Change Metro port
+////////////////////////////////////////
+Change Metro port
 e.g. By default Metro starts at port 8081. But if you want to start a new metro serving another R/N app at the same time, you need to start them on a different port, say 8082.
-(2.0) Check if a port is free
+(0) Check if a port is free
 // https://stackoverflow.com/a/4421674/7455975
 `sudo lsof -nP -i4TCP:$PORT | grep LISTEN`
   -- Remember to replace $PORT with a real one like 8082
-(2.1) Start Metro on port 8082
+(1) First start Metro and the app on normal port (8081)
+`yarn start`
+`yarn ios`
+(2) In a new Terminal, start a new Metro on a new port, e.g. 8082
 `yarn start --port 8082`
-(2.2) Start your R/N app on your Simulator and change its ip/port to <ip>/8082
-(2.2.1) ⌘D (Command-D) (or Command-Control-Z if Command-D won't work.) to open Developer Menu.
-(2.2.2) Choose "Configure Bundler" from Developer Menu.
-(2.2.3) Input the local IP of your wifi network, and port 8082
+(3) Config the app's bundle to the new port
+(3.1) ⌘D (Command-D) (or Command-Control-Z if Command-D won't work.) to open Developer Menu.
+(3.2) Choose "Configure Bundler" from Developer Menu.
+(3.3) Input the local IP of your wifi network, and the port, e.g. 8082
+(*) After the above steps, even if you kill and restart the app, the bundle configuration would persist.
 
-(3) Add items to Develop Menu
+////////////////////////////////////////
+Add items to Develop Menu
 
 // https://stackoverflow.com/a/68014411/7455975
 import { DevSettings } from 'react-native';
@@ -26,7 +33,8 @@ import { DevSettings } from 'react-native';
 
 https://yarnpkg.com/package/react-native-dev-menu
 
-(4) `yarn ios` to specific Simulator
+////////////////////////////////////////
+`yarn ios` to specific Simulator
 
 // https://stackoverflow.com/a/37329896/7455975
 `npx react-native run-ios --simulator="iPhone 13"`
