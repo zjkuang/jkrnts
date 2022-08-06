@@ -1,4 +1,5 @@
 import i18next from 'i18next';
+import 'intl-pluralrules';
 import {translation_en} from './en';
 import {translation_zh_CN} from './zh_CN';
 
