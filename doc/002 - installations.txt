@@ -4,3 +4,7 @@
 
 (2) i18next
 `yarn add i18next`
+
+(3) react-navigation
+`yarn add @react-navigation/native`
+`yarn add react-native-screens react-native-safe-area-context`
