@@ -1,5 +1,6 @@
 export interface Glossary {
-  helloWorld: string;
+  greeting: string;
+  iHaveSomeChildren_zero?: string;
   iHaveSomeChildren_one?: string;
   iHaveSomeChildren_other?: string;
 }

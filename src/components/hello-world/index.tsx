@@ -35,7 +35,12 @@ export const HelloWorld = () => {
           }}
         />
       </View>
-      <Text style={themedStyles(theme).text}>{lStr('helloWorld')}</Text>
+      <Text style={themedStyles(theme).text}>
+        {lStr('greeting', {
+          greeting: isChinese() ? '你好' : 'Hello',
+          to: isChinese() ? '中文世界' : 'English world',
+        })}
+      </Text>
       {!isChinese() && (
         <Text style={themedStyles(theme).text}>
           {lStr('iHaveSomeChildren', {count: 2})}
