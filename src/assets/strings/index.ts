@@ -5,7 +5,6 @@ import {translation_zh_CN} from './zh_CN';
 
 if (!i18next.isInitialized) {
   i18next.init({
-    compatibilityJSON: 'v3', // fix Android error "i18next::pluralResolver: Your environment seems not to be Intl API compatible, use an Intl.PluralRules polyfill" // https://stackoverflow.com/a/70521614/7455975
     lng: 'en', // if you're using a language detector, do not define the lng option
     debug: true,
     resources: {
