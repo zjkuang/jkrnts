@@ -8,3 +8,7 @@
 // To fix Android error "i18next::pluralResolver: Your environment seems not to be Intl API compatible, use an Intl.PluralRules polyfill"
 // https://stackoverflow.com/a/70865185/7455975
 `yarn add intl-pluralrules`
+
+(3) react-navigation
+`yarn add @react-navigation/native`
+`yarn add react-native-screens react-native-safe-area-context`
