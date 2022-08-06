@@ -8,6 +8,7 @@ import {fixedStyles, themedStyles} from './style';
 export const HelloWorld = () => {
   const theme = useTheme();
   const changeLanguage = useChangeLanguage();
+  const [count, setCount] = React.useState(0);
 
   return (
     <View style={themedStyles(theme).baseView}>
@@ -41,11 +42,26 @@ export const HelloWorld = () => {
           to: isChinese() ? '中文世界' : 'English world',
         })}
       </Text>
-      {!isChinese() && (
-        <Text style={themedStyles(theme).text}>
-          {lStr('iHaveSomeChildren', {count: 2})}
-        </Text>
-      )}
+      <Text style={themedStyles(theme).text}>
+        {lStr('iHaveSomeChildren', {count})}
+      </Text>
+      <View style={fixedStyles.rowView}>
+        <Button
+          title={'-'}
+          flavor={'ios-bordered'}
+          onPress={() => {
+            count > 0 && setCount(count - 1);
+          }}
+        />
+        <Text>{count}</Text>
+        <Button
+          title={'+'}
+          flavor={'ios-bordered'}
+          onPress={() => {
+            setCount(count + 1);
+          }}
+        />
+      </View>
     </View>
   );
 };
