@@ -1,5 +1,6 @@
 import {SnapshotOut, types} from 'mobx-state-tree';
 import {ExampleModel} from '../example';
+import {PreferencesModel} from '../preferences';
 import {IRootStore} from './IRootStore';
 
 /**
@@ -9,6 +10,7 @@ import {IRootStore} from './IRootStore';
 export const RootStoreModel = types
   .model('RootStore', {
     example: types.optional(ExampleModel, {}),
+    preferences: types.optional(PreferencesModel, {}),
   })
   .actions(self => ({
     afterCreate() {
@@ -16,6 +18,7 @@ export const RootStoreModel = types
     },
     reset() {
       self.example.reset();
+      self.preferences.reset();
     },
   }));
 

@@ -2,7 +2,7 @@ import {Colors} from './colors';
 
 const colors: Colors = {
   background: 'black',
-  border: 'lightGray',
+  border: '#808080',
   iOSButton: '#0A84FF',
   text: 'white',
 };

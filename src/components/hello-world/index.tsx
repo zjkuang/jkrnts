@@ -1,14 +1,19 @@
 import React from 'react';
 import {Text, View} from 'react-native';
+import {observer} from 'mobx-react-lite';
+import {useStores} from '../../models';
 import {lStr, isChinese} from '../../assets/strings';
 import {useChangeLanguage, useTheme} from '../hooks';
 import {Button} from '../styled';
 import {fixedStyles, themedStyles} from './style';
 
-export const HelloWorld = () => {
-  const theme = useTheme();
+export const HelloWorld = observer(() => {
   const changeLanguage = useChangeLanguage();
   const [count, setCount] = React.useState(0);
+  const {
+    preferences: {theme: perferredTheme, setTheme},
+  } = useStores();
+  const theme = useTheme();
 
   return (
     <View style={themedStyles(theme).baseView}>
@@ -53,7 +58,7 @@ export const HelloWorld = () => {
             count > 0 && setCount(count - 1);
           }}
         />
-        <Text>{count}</Text>
+        <Text style={themedStyles(theme).text}>{count}</Text>
         <Button
           title={'+'}
           flavor={'ios-bordered'}
@@ -62,6 +67,34 @@ export const HelloWorld = () => {
           }}
         />
       </View>
+      <View style={fixedStyles.rowView}>
+        <Button
+          title={'dark'}
+          flavor={'ios-bordered'}
+          onPress={() => {
+            setTheme('dark');
+          }}
+          textStyle={perferredTheme === 'dark' ? fixedStyles.textSelected : {}}
+        />
+        <Button
+          title={'light'}
+          flavor={'ios-bordered'}
+          onPress={() => {
+            setTheme('light');
+          }}
+          textStyle={perferredTheme === 'light' ? fixedStyles.textSelected : {}}
+        />
+        <Button
+          title={'system'}
+          flavor={'ios-bordered'}
+          onPress={() => {
+            setTheme('system');
+          }}
+          textStyle={
+            perferredTheme === 'system' ? fixedStyles.textSelected : {}
+          }
+        />
+      </View>
     </View>
   );
-};
+});

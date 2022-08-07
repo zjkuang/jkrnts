@@ -5,6 +5,10 @@ export const fixedStyles = StyleSheet.create({
   rowView: {
     flexDirection: 'row',
   },
+  textSelected: {
+    fontWeight: 'bold',
+    color: 'red',
+  },
 });
 
 export const themedStyles = (theme: Theme) => {

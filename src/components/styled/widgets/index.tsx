@@ -1,10 +1,12 @@
 import React from 'react';
+import {observer} from 'mobx-react-lite';
 import {
   Text,
   TouchableOpacity,
   StyleProp,
   TextProps,
   TouchableOpacityProps,
+  TextStyle,
 } from 'react-native';
 import {useTheme} from '../../hooks';
 import {themedStyles} from './style';
@@ -22,10 +24,10 @@ export type ButtonFlavor = 'ios-borderless' | 'ios-bordered' | 'plain';
 interface ButtonProps extends TouchableOpacityProps {
   title: string;
   flavor?: ButtonFlavor;
-  textStyle?: StyleProp<TextProps>;
+  textStyle?: StyleProp<TextStyle>;
   textProps?: TextProps; // such as numberOfLines
 }
-export const Button = (props: ButtonProps) => {
+export const Button = observer((props: ButtonProps) => {
   const theme = useTheme();
   let flavorStyleButton = {};
   let flavorStyleText = {};
@@ -44,6 +46,9 @@ export const Button = (props: ButtonProps) => {
       flavorStyleText = {...themedStyles(theme).iosButtonText};
       break;
   }
+  console.log(
+    `*** *** Button :: flavorStyleButton: ${JSON.stringify(flavorStyleButton)}`,
+  );
   return (
     <TouchableOpacity style={[{...flavorStyleButton}, props.style]} {...props}>
       <Text
@@ -53,4 +58,4 @@ export const Button = (props: ButtonProps) => {
       </Text>
     </TouchableOpacity>
   );
-};
+});

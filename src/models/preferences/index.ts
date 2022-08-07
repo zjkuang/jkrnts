@@ -12,8 +12,8 @@ export type PreferredLanguage = 'en' | 'zh_CN';
 
 export const PreferencesModel = types
   .model(MY_NAME, {
-    _language: types.optional(types.frozen<PreferredLanguage>(), 'en'),
-    _theme: types.optional(types.frozen<PreferredTheme>(), 'system'),
+    _language: types.frozen<PreferredLanguage>('en'),
+    _theme: types.frozen<PreferredTheme>('system'),
   })
   .extend(withRootStore)
   .views(self => ({
