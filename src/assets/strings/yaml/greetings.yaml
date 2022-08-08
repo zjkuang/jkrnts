@@ -1,13 +1,15 @@
 group: Greetings
 entries:
   - key: HelloWorld
-    en: Hello, English world!
-    zh: 你好，中文世界！
+    translations:
+      en: Hello, English world!
+      zh: 你好，中文世界！
   - key: GreetingTo
     args:
-     - name: greeting
-       type: string
-     - name: whom
-       type: string
-    en: ${greeting}, ${whom}!
-    zh: ${greeting}，${whom}！
+      - name: greeting
+        type: string
+      - name: whom
+        type: string
+    translations:
+      en: ${greeting}, ${whom}!
+      zh: ${greeting}，${whom}！
