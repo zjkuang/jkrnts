@@ -14,12 +14,9 @@ entries:
       zh_TW: 我沒有孩子。
     one:
       en: I have a child.
-      zh_CN: 我有一个孩子。
-      zh_HK: 我有一個孩子。
-      zh_TW: 我有一個孩子。
     other:
-      en: I have children.
-      zh_CN: 我有孩子。
-      zh_HK: 我有孩子。
-      zh_TW: 我有孩子。
+      en: I have {{count}} children.
+      zh_CN: 我有{{count}}个孩子。
+      zh_HK: 我有{{count}}個孩子。
+      zh_TW: 我有{{count}}個孩子。
       
