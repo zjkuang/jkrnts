@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import {observer} from 'mobx-react-lite';
 import {useStores} from '../../models';
-import {i18nextStrings, isChinese} from '../../assets/strings';
+import {i18nextStrings} from '../../assets/strings';
 import {useChangeLanguage, useTheme} from '../hooks';
 import {Button} from '../styled';
 import {fixedStyles, themedStyles} from './style';
@@ -50,30 +50,26 @@ export const HelloWorld = observer(() => {
       <Text style={themedStyles(theme).text}>
         {i18nextStrings.Statements.ICameFrom()}
       </Text>
-      {!isChinese() && (
-        <Text style={themedStyles(theme).text}>
-          {i18nextStrings.Statements.IHaveSomeChildren(count)}
-        </Text>
-      )}
-      {!isChinese() && (
-        <View style={fixedStyles.rowView}>
-          <Button
-            title={'-'}
-            flavor={'ios-bordered'}
-            onPress={() => {
-              count > 0 && setCount(count - 1);
-            }}
-          />
-          <Text style={themedStyles(theme).text}>{count}</Text>
-          <Button
-            title={'+'}
-            flavor={'ios-bordered'}
-            onPress={() => {
-              setCount(count + 1);
-            }}
-          />
-        </View>
-      )}
+      <Text style={themedStyles(theme).text}>
+        {i18nextStrings.Statements.IHaveSomeChildren(count)}
+      </Text>
+      <View style={fixedStyles.rowView}>
+        <Button
+          title={'-'}
+          flavor={'ios-bordered'}
+          onPress={() => {
+            count > 0 && setCount(count - 1);
+          }}
+        />
+        <Text style={themedStyles(theme).text}>{count}</Text>
+        <Button
+          title={'+'}
+          flavor={'ios-bordered'}
+          onPress={() => {
+            setCount(count + 1);
+          }}
+        />
+      </View>
       <View style={fixedStyles.rowView}>
         <Button
           title={'dark'}

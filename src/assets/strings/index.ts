@@ -6,6 +6,17 @@ import {translation_zh_CN} from './translations/zh_CN';
 import {translation_zh_HK} from './translations/zh_HK';
 import {translation_zh_TW} from './translations/zh_TW';
 
+// There is no plural rule for Chinese. So only _zero could be recognized in the key for Chinese.
+// e.g. In en (English) we could have
+//   'IHaveSomeChildren_zero': 'I have no child.',
+//   'IHaveSomeChildren_one': 'I have a child.',
+//   'IHaveSomeChildren_two': 'I have two children.',
+//   'IHaveSomeChildren_other': 'I have some children.',
+// but in zh_CN (Chinese Simplified) we could only have
+//   'IHaveSomeChildren_zero': '我没有孩子。',
+//   'IHaveSomeChildren': '我有孩子。',
+//   // IHaveSomeChildren_one, IHaveSomeChildren_two, IHaveSomeChildren_other... couldn't be recognized.
+
 if (!i18next.isInitialized) {
   i18next.init({
     lng: 'en', // if you're using a language detector, do not define the lng option
