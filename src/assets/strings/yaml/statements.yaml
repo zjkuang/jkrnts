@@ -15,8 +15,8 @@ entries:
     one:
       en: I have a child.
     other:
-      en: I have {{count}} children.
-      zh_CN: 我有{{count}}个孩子。
-      zh_HK: 我有{{count}}個孩子。
-      zh_TW: 我有{{count}}個孩子。
+      en: I have ${count} children.
+      zh_CN: 我有${count}个孩子。
+      zh_HK: 我有${count}個孩子。
+      zh_TW: 我有${count}個孩子。
       
