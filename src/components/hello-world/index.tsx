@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import {observer} from 'mobx-react-lite';
 import {useStores} from '../../models';
-import {lStr, isChinese} from '../../assets/strings';
+import {i18nextStrings, isChinese} from '../../assets/strings';
 import {useChangeLanguage, useTheme} from '../hooks';
 import {Button} from '../styled';
 import {fixedStyles, themedStyles} from './style';
@@ -42,31 +42,38 @@ export const HelloWorld = observer(() => {
         />
       </View>
       <Text style={themedStyles(theme).text}>
-        {lStr('greeting', {
-          greeting: isChinese() ? '你好' : 'Hello',
-          to: isChinese() ? '中文世界' : 'English world',
-        })}
+        {i18nextStrings.Greetings.HelloWorld()}
       </Text>
       <Text style={themedStyles(theme).text}>
-        {lStr('iHaveSomeChildren', {count})}
+        {i18nextStrings.Greetings.GreetingTo('Hi', 'David')}
       </Text>
-      <View style={fixedStyles.rowView}>
-        <Button
-          title={'-'}
-          flavor={'ios-bordered'}
-          onPress={() => {
-            count > 0 && setCount(count - 1);
-          }}
-        />
-        <Text style={themedStyles(theme).text}>{count}</Text>
-        <Button
-          title={'+'}
-          flavor={'ios-bordered'}
-          onPress={() => {
-            setCount(count + 1);
-          }}
-        />
-      </View>
+      <Text style={themedStyles(theme).text}>
+        {i18nextStrings.Statements.ICameFrom()}
+      </Text>
+      {!isChinese() && (
+        <Text style={themedStyles(theme).text}>
+          {i18nextStrings.Statements.IHaveSomeChildren(count)}
+        </Text>
+      )}
+      {!isChinese() && (
+        <View style={fixedStyles.rowView}>
+          <Button
+            title={'-'}
+            flavor={'ios-bordered'}
+            onPress={() => {
+              count > 0 && setCount(count - 1);
+            }}
+          />
+          <Text style={themedStyles(theme).text}>{count}</Text>
+          <Button
+            title={'+'}
+            flavor={'ios-bordered'}
+            onPress={() => {
+              setCount(count + 1);
+            }}
+          />
+        </View>
+      )}
       <View style={fixedStyles.rowView}>
         <Button
           title={'dark'}

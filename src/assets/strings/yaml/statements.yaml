@@ -1,0 +1,25 @@
+group: Statements
+entries:
+  - key: ICameFrom
+    en: I came from Canada.
+    zh_CN: 我来自大陆。
+    zh_HK: 我來自香港。
+    zh_TW: 我來自台灣。
+  - key: IHaveSomeChildren
+    type: counted
+    zero:
+      en: I have no child.
+      zh_CN: 我没有孩子。
+      zh_HK: 我沒有孩子。
+      zh_TW: 我沒有孩子。
+    one:
+      en: I have a child.
+      zh_CN: 我有一个孩子。
+      zh_HK: 我有一個孩子。
+      zh_TW: 我有一個孩子。
+    other:
+      en: I have children.
+      zh_CN: 我有孩子。
+      zh_HK: 我有孩子。
+      zh_TW: 我有孩子。
+      

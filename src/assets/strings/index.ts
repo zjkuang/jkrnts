@@ -1,7 +1,10 @@
 import i18next from 'i18next';
 import 'intl-pluralrules';
-import {translation_en} from './en';
-import {translation_zh_CN} from './zh_CN';
+import {translation_en} from './translations/en';
+import {translation_zh} from './translations/zh';
+import {translation_zh_CN} from './translations/zh_CN';
+import {translation_zh_HK} from './translations/zh_HK';
+import {translation_zh_TW} from './translations/zh_TW';
 
 if (!i18next.isInitialized) {
   i18next.init({
@@ -11,8 +14,17 @@ if (!i18next.isInitialized) {
       en: {
         translation: translation_en,
       },
+      zh: {
+        translation: translation_zh,
+      },
       zh_CN: {
         translation: translation_zh_CN,
+      },
+      zh_HK: {
+        translation: translation_zh_HK,
+      },
+      zh_TW: {
+        translation: translation_zh_TW,
       },
     },
   });
@@ -31,6 +43,4 @@ export const changeLanguage = (language: string) => {
 };
 
 // lStr: localized string
-export const lStr = (key: string, params?: object) => {
-  return i18next.t(key, params);
-};
+export * from './i18nextStrings';
