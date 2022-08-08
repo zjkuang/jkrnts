@@ -4,5 +4,5 @@ export const translation_en = {
   'Statements.ICameFrom': 'I came from Canada.',
   'Statements.IHaveSomeChildren_zero': 'I have no child.',
   'Statements.IHaveSomeChildren_one': 'I have a child.',
-  'Statements.IHaveSomeChildren_other': 'I have children.',
+  'Statements.IHaveSomeChildren_other': 'I have {{count}} children.',
 };

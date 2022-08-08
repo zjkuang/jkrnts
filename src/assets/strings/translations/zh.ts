@@ -3,5 +3,5 @@ export const translation_zh = {
   'Greetings.GreetingTo': '{{greeting}}，{{whom}}！',
   'Statements.ICameFrom': '我来自中国。',
   'Statements.IHaveSomeChildren_zero': '我没有孩子。',
-  'Statements.IHaveSomeChildren': '我有孩子。',
+  'Statements.IHaveSomeChildren': '我有{{count}}个孩子。',
 };

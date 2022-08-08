@@ -50,9 +50,6 @@ export const HelloWorld = observer(() => {
       <Text style={themedStyles(theme).text}>
         {i18nextStrings.Statements.ICameFrom()}
       </Text>
-      <Text style={themedStyles(theme).text}>
-        {i18nextStrings.Statements.IHaveSomeChildren(count)}
-      </Text>
       <View style={fixedStyles.rowView}>
         <Button
           title={'-'}
@@ -61,7 +58,9 @@ export const HelloWorld = observer(() => {
             count > 0 && setCount(count - 1);
           }}
         />
-        <Text style={themedStyles(theme).text}>{count}</Text>
+        <Text style={themedStyles(theme).text}>
+          {i18nextStrings.Statements.IHaveSomeChildren(count)}
+        </Text>
         <Button
           title={'+'}
           flavor={'ios-bordered'}
