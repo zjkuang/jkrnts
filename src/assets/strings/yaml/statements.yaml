@@ -7,7 +7,7 @@ entries:
       zh_HK: 我來自香港。
       zh_TW: 我來自台灣。
   - key: IHaveSomeChildren
-    type: counted
+    counted: true
     zero:
       translations:
         en: I have no child.
