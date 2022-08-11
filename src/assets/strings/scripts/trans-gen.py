@@ -1,6 +1,9 @@
 # pip3 install pyyaml
 # In VSCode, Command-Shift-P, "Python: Select interpreter", select the one marked "Global"
 
+# To run, in Terminal,
+# $ python3 trans-gen.py
+
 from array import array
 from genericpath import isdir
 from tabnanny import check
@@ -95,7 +98,7 @@ def parseEntryArgs(entry):
 
 # arguments
 #  count: '' | 'zero' | 'one' | 'other' - '' means uncounted
-def parseEntryTranslations(entryTranslations, counted, count, entryKey, group):
+def parseEntryTranslations(entryTranslations, counted, count, entryArgs, entryKey, group):
   global g_translations
   global gc_Uncounted, gc_CountZero, gc_CountOne, gc_CountOther
   # g_translations = {
@@ -145,6 +148,7 @@ def parseEntryTranslations(entryTranslations, counted, count, entryKey, group):
       entryKeyDict = groupDict[entryKey]
     except KeyError:
       entryKeyDict = {}
+    entryKeyDict['args'] = entryArgs
     entryKeyDict['counted'] = counted
     countType = count
     if count == '':
@@ -210,7 +214,7 @@ if __name__ == '__main__':
           except KeyError:
             zeroTranslations = {}
           if checkType(zeroTranslations, dict, f'Parse error: "translations" for "zero" should be a dict.\n{entry}'):
-            parseEntryTranslations(zeroTranslations, True, gc_CountZero, entryKey, group)
+            parseEntryTranslations(zeroTranslations, True, gc_CountZero, entryArgs, entryKey, group)
         try:
           one = entry[gc_CountOne]
         except KeyError:
@@ -221,7 +225,7 @@ if __name__ == '__main__':
           except KeyError:
             oneTranslations = {}
           if checkType(oneTranslations, dict, f'Parse error: "translations" for "one" should be a dict.\n{entry}'):
-            parseEntryTranslations(oneTranslations, True, gc_CountOne, entryKey, group)
+            parseEntryTranslations(oneTranslations, True, gc_CountOne, entryArgs, entryKey, group)
         try:
           other = entry[gc_CountOther]
         except KeyError:
@@ -232,7 +236,7 @@ if __name__ == '__main__':
           except KeyError:
             otherTranslations = {}
           if checkType(otherTranslations, dict, f'Parse error: "translations" for "other" should be a dict.\n{entry}'):
-            parseEntryTranslations(otherTranslations, True, gc_CountOther, entryKey, group)
+            parseEntryTranslations(otherTranslations, True, gc_CountOther, entryArgs, entryKey, group)
       else:
         print('uncounted')
         try:
@@ -241,5 +245,7 @@ if __name__ == '__main__':
           uncountedTranslations = {}
         if checkType(uncountedTranslations, dict, f'Parse error: "translations" for an uncounted entry should be a dict.\n{entry}'):
           print('uncountedTranslations:\n', uncountedTranslations)
-          parseEntryTranslations(uncountedTranslations, False, '', entryKey, group)
+          parseEntryTranslations(uncountedTranslations, False, '', entryArgs, entryKey, group)
   print(g_translations)
+  # Now generate files
+

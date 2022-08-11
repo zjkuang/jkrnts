@@ -7,6 +7,9 @@ entries:
       zh_HK: 我來自香港。
       zh_TW: 我來自台灣。
   - key: IHaveSomeChildren
+    args:
+      - name: count
+        type: number
     counted: true
     zero:
       translations:
