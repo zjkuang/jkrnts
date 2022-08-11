@@ -124,7 +124,7 @@ def parseEntryTranslations(entryTranslations, counted, count, entryKey, group):
     return
   if not checkType(group, str, f'Parse error: "group" should be a str.\n{group}'):
     return
-  for lang, translation in entryTranslations:
+  for lang, translation in entryTranslations.items():
     if not isinstance(lang, str):
       print('Parse error: "lang" should be a dict.\n', lang)
       continue
