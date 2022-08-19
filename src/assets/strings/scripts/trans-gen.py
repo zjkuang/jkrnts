@@ -248,4 +248,10 @@ if __name__ == '__main__':
           parseEntryTranslations(uncountedTranslations, False, '', entryArgs, entryKey, group)
   print(g_translations)
   # Now generate files
-
+  fout_i18next = open(g_i18nextStringsFile, 'w')
+  fout_i18next.write('import i18next from \'i18next\';\n')
+  fout_i18next.write('\n')
+  fout_i18next.write('export const i18nextStrings = {\n')
+  fout_i18next.write('  //\n')
+  fout_i18next.write('};\n')
+  fout_i18next.close()
