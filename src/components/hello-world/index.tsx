@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 import {observer} from 'mobx-react-lite';
+import {multiply} from '@zjkuang/react-native-utils';
 import {useStores} from '../../models';
 import {i18nextStrings} from '../../assets/strings';
 import {useChangeLanguage, useTheme} from '../hooks';
@@ -10,10 +11,21 @@ import {fixedStyles, themedStyles} from './style';
 export const HelloWorld = observer(() => {
   const changeLanguage = useChangeLanguage();
   const [count, setCount] = React.useState(0);
+  const [multiplyResult, setMultiplyResult] = React.useState<number>();
   const {
     preferences: {theme: perferredTheme, setTheme},
   } = useStores();
   const theme = useTheme();
+
+  React.useEffect(() => {
+    multiply(4, 7)
+      .then(v => {
+        setMultiplyResult(v);
+      })
+      .catch(reason => {
+        console.log(`multiply() failed: ${JSON.stringify(reason)}`);
+      });
+  }, []);
 
   return (
     <View style={themedStyles(theme).baseView}>
@@ -97,6 +109,11 @@ export const HelloWorld = observer(() => {
           }
         />
       </View>
+      <Text style={themedStyles(theme).text}>
+        {`multiplyResult: ${
+          multiplyResult === undefined ? 'undefined' : String(multiplyResult)
+        }`}
+      </Text>
     </View>
   );
 });

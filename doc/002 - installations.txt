@@ -12,3 +12,6 @@
 (3) react-navigation
 `yarn add @react-navigation/native`
 `yarn add react-native-screens react-native-safe-area-context`
+
+(4) @zjkuang/react-native-utils
+`yarn add @zjkuang/react-native-utils`

@@ -365,6 +365,8 @@ PODS:
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
+  - zjkuang-react-native-utils (0.2.0):
+    - React-Core
 
 DEPENDENCIES:
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
@@ -426,6 +428,7 @@ DEPENDENCIES:
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - RNScreens (from `../node_modules/react-native-screens`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
+  - "zjkuang-react-native-utils (from `../node_modules/@zjkuang/react-native-utils`)"
 
 SPEC REPOS:
   trunk:
@@ -516,6 +519,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-screens"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
+  zjkuang-react-native-utils:
+    :path: "../node_modules/@zjkuang/react-native-utils"
 
 SPEC CHECKSUMS:
   boost: a7c83b31436843459a1961bfd74b96033dc77234
@@ -568,6 +573,7 @@ SPEC CHECKSUMS:
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: 7ab6e3ee4ce47d7b789d1cb520163833e515f452
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
+  zjkuang-react-native-utils: 392ea34b6c2e868fbeb5d73d216974dd067fbfd2
 
 PODFILE CHECKSUM: c1d7c4e8fa6545517be2ae623bbedfba8d550ebd
 

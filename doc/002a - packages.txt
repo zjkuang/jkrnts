@@ -5,3 +5,5 @@
 (3) react-native-text-input-mask
 
 (4) yup
+
+(5) babel-plugin-module-resolver
