@@ -18,7 +18,7 @@ export const HelloWorld = observer(() => {
   const theme = useTheme();
 
   React.useEffect(() => {
-    multiply(4, 7)
+    multiply(3, 7)
       .then(v => {
         setMultiplyResult(v);
       })
