@@ -1,8 +1,7 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 import {observer} from 'mobx-react-lite';
-// import {multiply} from '@zjkuang/react-native-utils';
-import {add, multiply} from 'react-native-yet-another-utils';
+import {add, multiply} from '@zjkuang/react-native-utils';
 import {useTheme} from '../hooks';
 import {themedStyles} from './style';
 
@@ -11,15 +10,18 @@ export const HelloWorld = observer(() => {
   const [multiplyResult, setMultiplyResult] = React.useState<number>();
   const theme = useTheme();
 
+  const a = 3;
+  const b = 7;
+
   React.useEffect(() => {
-    add(3, 7)
+    add(a, b)
       .then(v => {
         setAddResult(v);
       })
       .catch(reason => {
         console.log(`add() failed: ${JSON.stringify(reason)}`);
       });
-    multiply(3, 7)
+    multiply(a, b)
       .then(v => {
         setMultiplyResult(v);
       })
@@ -30,16 +32,16 @@ export const HelloWorld = observer(() => {
 
   return (
     <View style={themedStyles(theme).baseView}>
-      <Text style={themedStyles(theme).text}>
-        {`addResult: ${
-          addResult === undefined ? 'undefined' : String(addResult)
-        }`}
-      </Text>
-      <Text style={themedStyles(theme).text}>
-        {`multiplyResult: ${
-          multiplyResult === undefined ? 'undefined' : String(multiplyResult)
-        }`}
-      </Text>
+      {addResult !== undefined && (
+        <Text style={themedStyles(theme).text}>
+          {`${a} + ${b} = ${String(addResult)}`}
+        </Text>
+      )}
+      {multiplyResult !== undefined && (
+        <Text style={themedStyles(theme).text}>
+          {`${a} x ${b} = ${String(multiplyResult)}`}
+        </Text>
+      )}
     </View>
   );
 });
