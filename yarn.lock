@@ -1653,10 +1653,10 @@
     "@typescript-eslint/types" "5.30.6"
     eslint-visitor-keys "^3.3.0"
 
-"@zjkuang/react-native-utils@^0.2.9":
-  version "0.2.9"
-  resolved "https://registry.yarnpkg.com/@zjkuang/react-native-utils/-/react-native-utils-0.2.9.tgz#e35bdd891f0fc548b2898880ccb247ea46657fb2"
-  integrity sha512-Z0ox7QWTbCEOBFluuKVn2gqXRF/Beko0xu5yCrAoTMLVEZM7Oav/OjMlZD5FJe73uXKVVHef+xUmjEg5G4LQAA==
+"@zjkuang/react-native-utils@^0.2.13":
+  version "0.2.13"
+  resolved "https://registry.yarnpkg.com/@zjkuang/react-native-utils/-/react-native-utils-0.2.13.tgz#fbeff870b1eee07fbd44c7b8f46e925c9fbc187e"
+  integrity sha512-HOha/1LW2dwUK6AiGS+lNAEcOKzPrXw2yhjGW0cD/QWGmMf1h7BCI1IOhtlyF2MqW95OmfrttMZ/IxWD3e3lBA==
 
 abab@^2.0.3, abab@^2.0.5:
   version "2.0.6"

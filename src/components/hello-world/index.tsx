@@ -1,19 +1,23 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 import {observer} from 'mobx-react-lite';
-import {add, multiply} from '@zjkuang/react-native-utils';
+import {add, multiply, hello} from '@zjkuang/react-native-utils';
 import {useTheme} from '../hooks';
 import {themedStyles} from './style';
 
 export const HelloWorld = observer(() => {
+  const [helloResult, setHelloResult] = React.useState<string>();
   const [addResult, setAddResult] = React.useState<number>();
   const [multiplyResult, setMultiplyResult] = React.useState<number>();
   const theme = useTheme();
 
+  const greeting = 'hi';
+  const whom = 'there';
   const a = 3;
   const b = 7;
 
   React.useEffect(() => {
+    hello(greeting, whom).then(setHelloResult).catch(setHelloResult);
     add(a, b)
       .then(v => {
         setAddResult(v);
@@ -32,6 +36,7 @@ export const HelloWorld = observer(() => {
 
   return (
     <View style={themedStyles(theme).baseView}>
+      <Text style={themedStyles(theme).text}>{helloResult}</Text>
       {addResult !== undefined && (
         <Text style={themedStyles(theme).text}>
           {`${a} + ${b} = ${String(addResult)}`}
