@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 import {observer} from 'mobx-react-lite';
-import {add, multiply, hello} from '@zjkuang/react-native-utils';
+import {hello, add, multiply} from '@zjkuang/react-native-utils';
 import {useTheme} from '../hooks';
 import {themedStyles} from './style';
 

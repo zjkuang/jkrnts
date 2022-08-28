@@ -15,3 +15,4 @@
 
 (4) @zjkuang/react-native-utils
 `yarn add @zjkuang/react-native-utils`
+(`yarn remove @zjkuang/react-native-utils && yarn add @zjkuang/react-native-utils && rm -rf node_modules && yarn && yarn pod`)
