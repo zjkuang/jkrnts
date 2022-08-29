@@ -367,7 +367,7 @@ PODS:
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
-  - zjkuang-react-native-utils (0.2.17):
+  - zjkuang-react-native-utils (0.2.19):
     - React-Core
 
 DEPENDENCIES:
@@ -579,7 +579,7 @@ SPEC CHECKSUMS:
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: 7ab6e3ee4ce47d7b789d1cb520163833e515f452
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
-  zjkuang-react-native-utils: 3ce1c7993018013fc8c5279536179f2e65089764
+  zjkuang-react-native-utils: e6a6704ad78c7f4068fe018c715c50418a9d9752
 
 PODFILE CHECKSUM: c1d7c4e8fa6545517be2ae623bbedfba8d550ebd
 
