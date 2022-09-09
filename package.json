@@ -4,12 +4,16 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "android:revokepermissions:location": "adb shell pm revoke com.jkrnts android.permission.ACCESS_COARSE_LOCATION && adb shell pm revoke com.jkrnts android.permission.ACCESS_FINE_LOCATION && adb shell pm revoke com.jkrnts android.permission.ACCESS_BACKGROUND_LOCATION",
+    "android:sim:uninstall": "adb uninstall com.jkrnts",
     "ios": "react-native run-ios",
-    "sim-ipad-9th": "react-native run-ios --simulator \"iPad (9th generation)\"",
+    "ios:sim:ipad-9th": "react-native run-ios --simulator \"iPad (9th generation)\"",
+    "ios:sim:uninstall": "xcrun simctl uninstall booted org.reactjs.native.example.jkrnts",
     "pod": "pod install --project-directory=ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "string-gen": "cd src/assets/strings/scripts && python3 trans-gen.py && cd ../../../.."
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.17.7",
