@@ -1,9 +1,13 @@
-(1) Do not use 'moment', use 'date-fns'
+(1) react-native-orientation-locker
 
-(2) RNSVG
+(2) Do not use 'moment', use 'date-fns'
 
-(3) react-native-text-input-mask
+(3) RNSVG
 
-(4) yup
+(4) react-native-text-input-mask
 
-(5) babel-plugin-module-resolver
+(5) yup
+
+(6) babel-plugin-module-resolver
+
+(7) react-native-dev-menu
