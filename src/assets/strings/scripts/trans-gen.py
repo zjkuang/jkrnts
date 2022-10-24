@@ -32,6 +32,7 @@ gc_ArgTypeString = 'string'
 gc_EntryTranslations = 'translations'
 
 g_translations = {}
+g_i18nextFunctions = {}
 
 def getFileList():
   global g_yamlDir
@@ -94,26 +95,73 @@ def parseEntryArgs(entry):
       'name': argName,
       'type': argType
     })
+  print(f'*** *** *** parseEntryArgs("{entry}") result:')
+  print(f'{entryArgs}')
   return entryArgs
+
+def addEntryArgs(entryKey, entryArgs, group):
+  # print(f'addEntryArgs({entryKey}, {entryArgs}, {group})...')
+  global g_i18nextFunctions
+  try:
+    groupDict = g_i18nextFunctions[group]
+  except KeyError:
+    groupDict = {}
+  try:
+    existedEntryArgs = groupDict[entryKey]
+  except KeyError:
+    groupDict[entryKey] = entryArgs
+    return
+  for newEntryArg in entryArgs:
+    try:
+      newEntryArgName = newEntryArg['name']
+    except KeyError:
+      continue
+    duplicate = False
+    for existedEntryArg in existedEntryArgs:
+      try:
+        existedEntryArgName = existedEntryArg['name']
+      except KeyError:
+        continue
+      if groupDict[entryKey] == newEntryArgName:
+        print(f'Conflict: group:{group}, entry:{entryKey}, arg:{existedEntryArgName}')
+        duplicate = True
+        continue
+    if not duplicate:
+      existedEntryArgs.append(newEntryArg)
+    g_i18nextFunctions[group] = groupDict
 
 # arguments
 #  count: '' | 'zero' | 'one' | 'other' - '' means uncounted
 def parseEntryTranslations(entryTranslations, counted, count, entryArgs, entryKey, group):
-  global g_translations
+  global g_translations, g_i18nextFunctions
   global gc_Uncounted, gc_CountZero, gc_CountOne, gc_CountOther
+  #
   # g_translations = {
   #   <lang>: {
   #     <group>: {
   #       <entryKey>: {
-  #         type: <'counted' | 'uncounted'>
-  #         uncounted: <value>
-  #         zero: <value>
-  #         one: <value>
+  #         type: <'counted' | 'uncounted'>,
+  #         uncounted: <value>,
+  #         zero: <value>,
+  #         one: <value>,
   #         other: <value>
   #       }
   #     }
   #   }
   # }
+  #
+  # g_i18nextFunctions = {
+  #   <group>: {
+  #     <entryKey>: [
+  #       {
+  #         name: '<arg_name>',
+  #         type: '<arg_type>'
+  #       },
+  #       ...
+  #     ]
+  #   }
+  # }
+  #
   if not checkType(entryTranslations, dict, f'Parse error: "entryTranslations" should be a dict.\n{entryTranslations}'):
     return
   if not checkType(counted, bool, f'Parse error: "count" should be a dict.\n{counted}'):
@@ -195,6 +243,7 @@ if __name__ == '__main__':
         continue
       entryKey = entryKey.strip()
       entryArgs = parseEntryArgs(entry)
+      addEntryArgs(entryKey, entryArgs, group)
       try:
         counted = entry['counted']
       except KeyError:
@@ -246,7 +295,10 @@ if __name__ == '__main__':
         if checkType(uncountedTranslations, dict, f'Parse error: "translations" for an uncounted entry should be a dict.\n{entry}'):
           print('uncountedTranslations:\n', uncountedTranslations)
           parseEntryTranslations(uncountedTranslations, False, '', entryArgs, entryKey, group)
+  print('g_translations:')
   print(g_translations)
+  print('g_i18nextFunctions')
+  print(g_i18nextFunctions)
   # Now generate files
   fout_i18next = open(g_i18nextStringsFile, 'w')
   fout_i18next.write('import i18next from \'i18next\';\n')
