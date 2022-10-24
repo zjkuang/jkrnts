@@ -5,6 +5,8 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
+    "ios:devices": "xcrun simctl list",
+    "android:devices": "emulator -list-avds",
     "sim-ipad-9th": "react-native run-ios --simulator \"iPad (9th generation)\"",
     "pod": "pod install --project-directory=ios",
     "start": "react-native start",
