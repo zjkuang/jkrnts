@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "android:devices": "emulator -list-avds",
     "android:revokepermissions:location": "adb shell pm revoke com.jkrnts android.permission.ACCESS_COARSE_LOCATION && adb shell pm revoke com.jkrnts android.permission.ACCESS_FINE_LOCATION && adb shell pm revoke com.jkrnts android.permission.ACCESS_BACKGROUND_LOCATION",
     "android:sim:uninstall": "adb uninstall com.jkrnts",
     "ios": "react-native run-ios",
+    "ios:devices": "xcrun simctl list",
     "ios:sim:ipad-9th": "react-native run-ios --simulator \"iPad (9th generation)\"",
     "ios:sim:uninstall": "xcrun simctl uninstall booted org.reactjs.native.example.jkrnts",
     "pod": "pod install --project-directory=ios",
