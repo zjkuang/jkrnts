@@ -68,7 +68,6 @@ def parseEntryArgs(entry):
     entryArgsRaw = []
   if not checkType(entryArgsRaw, list, f'Parse error: entry args should be a list.\n{entry}'):
     return []
-  entryArgs = entryArgs
   for entryArg in entryArgsRaw:
     if not checkType(entryArg, dict, f'Parse error: each entry arg should be a dict.\n{entry}'):
       continue
@@ -95,21 +94,22 @@ def parseEntryArgs(entry):
       'name': argName,
       'type': argType
     })
-  print(f'*** *** *** parseEntryArgs("{entry}") result:')
-  print(f'{entryArgs}')
   return entryArgs
 
 def addEntryArgs(entryKey, entryArgs, group):
-  # print(f'addEntryArgs({entryKey}, {entryArgs}, {group})...')
   global g_i18nextFunctions
+  isNewGroup = False
   try:
     groupDict = g_i18nextFunctions[group]
   except KeyError:
+    isNewGroup = True
     groupDict = {}
   try:
     existedEntryArgs = groupDict[entryKey]
   except KeyError:
     groupDict[entryKey] = entryArgs
+    if isNewGroup:
+      g_i18nextFunctions[group] = groupDict
     return
   for newEntryArg in entryArgs:
     try:
@@ -123,12 +123,12 @@ def addEntryArgs(entryKey, entryArgs, group):
       except KeyError:
         continue
       if groupDict[entryKey] == newEntryArgName:
-        print(f'Conflict: group:{group}, entry:{entryKey}, arg:{existedEntryArgName}')
         duplicate = True
         continue
     if not duplicate:
       existedEntryArgs.append(newEntryArg)
-    g_i18nextFunctions[group] = groupDict
+    if isNewGroup:
+      g_i18nextFunctions[group] = groupDict
 
 # arguments
 #  count: '' | 'zero' | 'one' | 'other' - '' means uncounted
@@ -223,7 +223,6 @@ if __name__ == '__main__':
     if not checkType(group, str, f'Parse error: "group" should be a str.\n{group}'):
       continue
     group = group.strip()
-    print('group: ', group)
     try:
       entries = o['entries']
     except KeyError:
@@ -251,7 +250,6 @@ if __name__ == '__main__':
       if not checkType(counted, bool, f'Parse error: "counted" of an entry should be a bool.\n{entry}'):
         continue
       if counted:
-        print('counted')
         # 'zero', 'one', 'other'
         try:
           zero = entry[gc_CountZero]
@@ -287,18 +285,14 @@ if __name__ == '__main__':
           if checkType(otherTranslations, dict, f'Parse error: "translations" for "other" should be a dict.\n{entry}'):
             parseEntryTranslations(otherTranslations, True, gc_CountOther, entryArgs, entryKey, group)
       else:
-        print('uncounted')
         try:
           uncountedTranslations = entry[gc_EntryTranslations]
         except KeyError:
           uncountedTranslations = {}
         if checkType(uncountedTranslations, dict, f'Parse error: "translations" for an uncounted entry should be a dict.\n{entry}'):
-          print('uncountedTranslations:\n', uncountedTranslations)
           parseEntryTranslations(uncountedTranslations, False, '', entryArgs, entryKey, group)
-  print('g_translations:')
-  print(g_translations)
-  print('g_i18nextFunctions')
-  print(g_i18nextFunctions)
+  print(f'g_translations: {g_translations}')
+  print(f'g_i18nextFunctions: {g_i18nextFunctions}')
   # Now generate files
   fout_i18next = open(g_i18nextStringsFile, 'w')
   fout_i18next.write('import i18next from \'i18next\';\n')
