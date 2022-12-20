@@ -295,9 +295,30 @@ if __name__ == '__main__':
   print(f'g_i18nextFunctions: {g_i18nextFunctions}')
   # Now generate files
   fout_i18next = open(g_i18nextStringsFile, 'w')
+  fout_i18next.write('// Generated file. Don\'t edit.\n\n')
   fout_i18next.write('import i18next from \'i18next\';\n')
   fout_i18next.write('\n')
   fout_i18next.write('export const i18nextStrings = {\n')
-  fout_i18next.write('  //\n')
+  for group, groupContents in g_i18nextFunctions.items():
+    fout_i18next.write(f'  {group}')
+    fout_i18next.write(': {\n')
+    for entry, entryArgs in groupContents.items():
+      numberOfArgs = len(entryArgs)
+      fout_i18next.write(f'    {entry}: (')
+      for i in range(numberOfArgs):
+        fout_i18next.write(f'{entryArgs[i]["name"]}: {entryArgs[i]["type"]}')
+        if i + 1 < numberOfArgs:
+          fout_i18next.write(', ')
+      fout_i18next.write(') => {\n')
+      fout_i18next.write(f'      return i18next.t(\'{group}.{entry}\'')
+      if numberOfArgs > 0:
+        fout_i18next.write(', {\n')
+        for arg in entryArgs:
+          fout_i18next.write(f'        {arg["name"]},\n')
+        fout_i18next.write('      });\n')
+      else:
+        fout_i18next.write(');\n')
+      fout_i18next.write('    },\n')
+    fout_i18next.write('  },\n')
   fout_i18next.write('};\n')
   fout_i18next.close()
