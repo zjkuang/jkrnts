@@ -1,10 +1,10 @@
 import i18next from 'i18next';
 import 'intl-pluralrules';
-import {translation_en} from './translations/en';
-import {translation_zh} from './translations/zh';
-import {translation_zh_CN} from './translations/zh_CN';
-import {translation_zh_HK} from './translations/zh_HK';
-import {translation_zh_TW} from './translations/zh_TW';
+import {translation_en} from '../strings/generated/translations/en';
+import {translation_zh} from '../strings/generated/translations/zh';
+import {translation_zh_CN} from '../strings/generated/translations/zh_CN';
+import {translation_zh_HK} from '../strings/generated/translations/zh_HK';
+import {translation_zh_TW} from '../strings/generated/translations/zh_TW';
 
 // There is no plural rule for Chinese. So only _zero could be recognized in the key for Chinese.
 // e.g. In en (English) we could have
@@ -54,4 +54,4 @@ export const changeLanguage = (language: string) => {
 };
 
 // lStr: localized string
-export * from './i18nextStrings';
+export * from '../strings/generated/i18nextStrings';
