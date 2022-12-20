@@ -23,5 +23,10 @@ export const themedStyles = (theme: Theme) => {
     text: {
       color: colors(theme).text,
     },
+    horizontalContainer: {
+      flexDirection: 'row',
+      alignItems: 'center', // along secondary axis
+      backgroundColor: colors(theme).background,
+    },
   });
 };

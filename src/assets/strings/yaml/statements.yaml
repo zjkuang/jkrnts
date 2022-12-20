@@ -23,7 +23,10 @@ entries:
     other:
       translations:
         en: I have ${count} children.
+    pluraless:
+      translations:
         zh_CN: 我有${count}个孩子。
         zh_HK: 我有${count}個孩子。
         zh_TW: 我有${count}個孩子。
+        
       

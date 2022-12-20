@@ -3,7 +3,9 @@ entries:
   - key: HelloWorld
     translations:
       en: Hello, English world!
-      zh: 你好，中文世界！
+      zh_CN: 你好，中文世界！
+      zh_HK: 你好，中文世界！
+      zh_TW: 你好，中文世界！
   - key: GreetingTo
     args:
       - name: greeting

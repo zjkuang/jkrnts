@@ -1,15 +1,19 @@
-import React from 'react';
+import * as React from 'react';
 import {Text, View} from 'react-native';
 import {observer} from 'mobx-react-lite';
 import {hello, add, multiply} from '@zjkuang/react-native-utils';
-import {useTheme} from '../hooks';
+import {i18nextStrings} from '../../assets/strings';
+import {Button} from '../styled';
+import {useTheme, useChangeLanguage} from '../hooks';
 import {themedStyles} from './style';
 
 export const HelloWorld = observer(() => {
   const [helloResult, setHelloResult] = React.useState<string>();
   const [addResult, setAddResult] = React.useState<number>();
   const [multiplyResult, setMultiplyResult] = React.useState<number>();
+  const [numberOfChildren, setNumberOfChildren] = React.useState(0);
   const theme = useTheme();
+  const changeLanguage = useChangeLanguage();
 
   const greeting = 'hi';
   const whom = 'there';
@@ -19,20 +23,35 @@ export const HelloWorld = observer(() => {
   React.useEffect(() => {
     hello(greeting, whom).then(setHelloResult).catch(setHelloResult);
     add(a, b)
-      .then(v => {
-        setAddResult(v);
-      })
+      .then(setAddResult)
       .catch(reason => {
         console.log(`add() failed: ${JSON.stringify(reason)}`);
       });
     multiply(a, b)
-      .then(v => {
-        setMultiplyResult(v);
-      })
+      .then(setMultiplyResult)
       .catch(reason => {
         console.log(`multiply() failed: ${JSON.stringify(reason)}`);
       });
   }, []);
+
+  const onPressNumberOfChildrenChange = React.useCallback(
+    (action: '-' | '+') => {
+      if (action === '-') {
+        if (numberOfChildren > 0) {
+          setNumberOfChildren(numberOfChildren - 1);
+        }
+      } else if (action === '+') {
+        setNumberOfChildren(numberOfChildren + 1);
+      }
+    },
+    [numberOfChildren],
+  );
+
+  const onPressLanguageButton = (
+    language: 'en' | 'zh' | 'zh_CN' | 'zh_HK' | 'zh_TW',
+  ) => {
+    changeLanguage(language);
+  };
 
   return (
     <View style={themedStyles(theme).baseView}>
@@ -47,6 +66,55 @@ export const HelloWorld = observer(() => {
           {`${a} x ${b} = ${String(multiplyResult)}`}
         </Text>
       )}
+      <Text style={themedStyles(theme).text}>
+        {i18nextStrings.Greetings.HelloWorld()}
+      </Text>
+      <Text style={themedStyles(theme).text}>
+        {i18nextStrings.Statements.ICameFrom()}
+      </Text>
+      <View style={themedStyles(theme).horizontalContainer}>
+        <Button
+          title="-"
+          flavor="ios-bordered"
+          textProps={{style: themedStyles(theme).text}}
+          onPress={() => onPressNumberOfChildrenChange('-')}
+        />
+        <Text style={themedStyles(theme).text}>
+          {i18nextStrings.Statements.IHaveSomeChildren(numberOfChildren)}
+        </Text>
+        <Button
+          title="+"
+          flavor="ios-bordered"
+          textProps={{style: themedStyles(theme).text}}
+          onPress={() => onPressNumberOfChildrenChange('+')}
+        />
+      </View>
+      <View style={themedStyles(theme).horizontalContainer}>
+        <Button
+          title="English"
+          flavor="ios-bordered"
+          textProps={{style: themedStyles(theme).text}}
+          onPress={() => onPressLanguageButton('en')}
+        />
+        <Button
+          title="中国大陆"
+          flavor="ios-bordered"
+          textProps={{style: themedStyles(theme).text}}
+          onPress={() => onPressLanguageButton('zh_CN')}
+        />
+        <Button
+          title="香港"
+          flavor="ios-bordered"
+          textProps={{style: themedStyles(theme).text}}
+          onPress={() => onPressLanguageButton('zh_HK')}
+        />
+        <Button
+          title="台灣"
+          flavor="ios-bordered"
+          textProps={{style: themedStyles(theme).text}}
+          onPress={() => onPressLanguageButton('zh_TW')}
+        />
+      </View>
     </View>
   );
 });

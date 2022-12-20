@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {observer} from 'mobx-react-lite';
 import {
   Text,
@@ -46,9 +46,6 @@ export const Button = observer((props: ButtonProps) => {
       flavorStyleText = {...themedStyles(theme).iosButtonText};
       break;
   }
-  console.log(
-    `*** *** Button :: flavorStyleButton: ${JSON.stringify(flavorStyleButton)}`,
-  );
   return (
     <TouchableOpacity style={[{...flavorStyleButton}, props.style]} {...props}>
       <Text

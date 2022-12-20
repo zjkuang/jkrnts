@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {SafeAreaView, StatusBar} from 'react-native';
 import {observer} from 'mobx-react-lite';
 import {HelloWorld} from '../hello-world';

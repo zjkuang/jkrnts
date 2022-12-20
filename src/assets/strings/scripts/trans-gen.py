@@ -25,6 +25,7 @@ gc_Uncounted = 'uncounted'
 gc_CountZero = 'zero'
 gc_CountOne = 'one'
 gc_CountOther = 'other'
+gc_CountPluraless = 'pluraless'
 gc_ArgTypeBoolean = 'boolean'
 gc_ArgTypeNumber = 'number'
 gc_ArgTypeString = 'string'
@@ -133,7 +134,7 @@ def addEntryArgs(entryKey, entryArgs, group):
 #  count: '' | 'zero' | 'one' | 'other' - '' means uncounted
 def parseEntryTranslations(entryTranslations, counted, count, entryArgs, entryKey, group):
   global g_translations, g_i18nextFunctions
-  global gc_Uncounted, gc_CountZero, gc_CountOne, gc_CountOther
+  global gc_Uncounted, gc_CountZero, gc_CountOne, gc_CountOther, gc_CountPluraless
   #
   # g_translations = {
   #   <lang>: {
@@ -167,8 +168,8 @@ def parseEntryTranslations(entryTranslations, counted, count, entryArgs, entryKe
     return
   if not checkType(count, str, f'Parse error: "count" should be a dict.\n{count}'):
     return
-  if not (count == '' or count == gc_CountZero or count == gc_CountOne or count == gc_CountOther):
-    print(f'Parse error: "count" should take a value from [\'\', \'{gc_CountZero}\', \'{gc_CountOne}\', \'{gc_CountOther}\'].\n', count)
+  if not (count == '' or count == gc_CountZero or count == gc_CountOne or count == gc_CountOther or count == gc_CountPluraless):
+    print(f'Parse error: "count" should take a value from [\'\', \'{gc_CountZero}\', \'{gc_CountOne}\', \'{gc_CountOther}\', \'{gc_CountPluraless}\'].\n', count)
     return
   if not checkType(entryKey, str, f'Parse error: "entryKey" should be a str.\n{entryKey}'):
     return
@@ -283,13 +284,24 @@ if __name__ == '__main__':
           other = entry[gc_CountOther]
         except KeyError:
           other = {}
-        if checkType(other, dict, f'Parse error: "one" of an entry should be a dict.\n{entry}'):
+        if checkType(other, dict, f'Parse error: "other" of an entry should be a dict.\n{entry}'):
           try:
             otherTranslations = other[gc_EntryTranslations]
           except KeyError:
             otherTranslations = {}
           if checkType(otherTranslations, dict, f'Parse error: "translations" for "other" should be a dict.\n{entry}'):
             parseEntryTranslations(otherTranslations, True, gc_CountOther, entryArgs, entryKey, group)
+        try:
+          pluraless = entry[gc_CountPluraless]
+        except KeyError:
+          pluraless = {}
+        if checkType(pluraless, dict, f'Parse error: "pluraless" of an entry should be a dict.\n{entry}'):
+          try:
+            pluralessTranslations = pluraless[gc_EntryTranslations]
+          except KeyError:
+            pluralessTranslations = {}
+          if checkType(pluralessTranslations, dict, f'Parse error: "translations" for "pluraless" should be a dict.\n{entry}'):
+            parseEntryTranslations(pluralessTranslations, True, gc_CountPluraless, entryArgs, entryKey, group)
       else:
         try:
           uncountedTranslations = entry[gc_EntryTranslations]
@@ -356,6 +368,12 @@ if __name__ == '__main__':
             other = entryDetails['other']
             other = replaceTranslationArgs(other, entryDetails['args'])
             fout_translationFile.write(f'  \'{group}.{entry}_other\': \'{other}\',\n')
+          except KeyError:
+            pass
+          try:
+            pluraless = entryDetails['pluraless']
+            pluraless = replaceTranslationArgs(pluraless, entryDetails['args'])
+            fout_translationFile.write(f'  \'{group}.{entry}\': \'{pluraless}\',\n')
           except KeyError:
             pass
         else:
