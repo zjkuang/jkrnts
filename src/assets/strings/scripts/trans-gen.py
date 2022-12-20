@@ -19,7 +19,6 @@ print('yaml version:', yaml.__version__)
 g_yamlDir = '../yaml'
 g_generatedDir = '../generated'
 g_translationsDir = '/'.join((g_generatedDir, 'translations'))
-g_translationFiles = []
 g_i18nextStringsFile = '/'.join((g_generatedDir, 'i18nextStrings.ts'))
 
 gc_Uncounted = 'uncounted'
@@ -208,6 +207,13 @@ def parseEntryTranslations(entryTranslations, counted, count, entryArgs, entryKe
     langDict[group] = groupDict
     g_translations[trimmedLang] = langDict
 
+def replaceTranslationArgs(translation, args):
+  result = f'{translation}'
+  for arg in args:
+    argName = arg['name']
+    result = result.replace('${' + argName + '}', '{{' + argName + '}}')
+  return result
+
 if __name__ == '__main__':
   prepareDirectories()
   files = getFileList()
@@ -293,7 +299,8 @@ if __name__ == '__main__':
           parseEntryTranslations(uncountedTranslations, False, '', entryArgs, entryKey, group)
   print(f'g_translations: {g_translations}')
   print(f'g_i18nextFunctions: {g_i18nextFunctions}')
-  # Now generate files
+
+  # Now generate i18nextStrings.ts
   fout_i18next = open(g_i18nextStringsFile, 'w')
   fout_i18next.write('// Generated file. Don\'t edit.\n\n')
   fout_i18next.write('import i18next from \'i18next\';\n')
@@ -322,3 +329,37 @@ if __name__ == '__main__':
     fout_i18next.write('  },\n')
   fout_i18next.write('};\n')
   fout_i18next.close()
+
+  # Now generate translation files
+  for language, contents in g_translations.items():
+    translationFile = '/'.join((g_translationsDir, f'{language}.ts'))
+    fout_translationFile = open(translationFile, 'w')
+    fout_translationFile.write('// Generated file. Don\'t edit.\n\n')
+    fout_translationFile.write(f'export const translation_{language}')
+    fout_translationFile.write(' = {\n')
+    for group, entries in contents.items():
+      for entry, entryDetails in entries.items():
+        if entryDetails['counted']:
+          try:
+            zero = entryDetails['zero']
+            zero = replaceTranslationArgs(zero, entryDetails['args'])
+            fout_translationFile.write(f'  \'{group}.{entry}_zero\': \'{zero}\',\n')
+          except KeyError:
+            pass
+          try:
+            one = entryDetails['one']
+            one = replaceTranslationArgs(one, entryDetails['args'])
+            fout_translationFile.write(f'  \'{group}.{entry}_one\': \'{one}\',\n')
+          except KeyError:
+            pass
+          try:
+            other = entryDetails['other']
+            other = replaceTranslationArgs(other, entryDetails['args'])
+            fout_translationFile.write(f'  \'{group}.{entry}_other\': \'{other}\',\n')
+          except KeyError:
+            pass
+        else:
+          uncounted = replaceTranslationArgs(entryDetails['uncounted'], entryDetails['args'])
+          fout_translationFile.write(f'  \'{group}.{entry}\': \'{uncounted}\',\n')
+    fout_translationFile.write('};\n')
+    fout_translationFile.close
