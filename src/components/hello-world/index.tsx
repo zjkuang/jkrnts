@@ -11,7 +11,7 @@ export const HelloWorld = observer(() => {
   const [helloResult, setHelloResult] = React.useState<string>();
   const [addResult, setAddResult] = React.useState<number>();
   const [multiplyResult, setMultiplyResult] = React.useState<number>();
-  const [numberOfChildren, setNumberOfChildren] = React.useState(0);
+  const [numberOfGeese, setNumberOfGeese] = React.useState(0);
   const theme = useTheme();
   const changeLanguage = useChangeLanguage();
 
@@ -34,17 +34,17 @@ export const HelloWorld = observer(() => {
       });
   }, []);
 
-  const onPressNumberOfChildrenChange = React.useCallback(
+  const onPressNumberOfGeeseChange = React.useCallback(
     (action: '-' | '+') => {
       if (action === '-') {
-        if (numberOfChildren > 0) {
-          setNumberOfChildren(numberOfChildren - 1);
+        if (numberOfGeese > 0) {
+          setNumberOfGeese(numberOfGeese - 1);
         }
       } else if (action === '+') {
-        setNumberOfChildren(numberOfChildren + 1);
+        setNumberOfGeese(numberOfGeese + 1);
       }
     },
-    [numberOfChildren],
+    [numberOfGeese],
   );
 
   const onPressLanguageButton = (
@@ -77,16 +77,16 @@ export const HelloWorld = observer(() => {
           title="-"
           flavor="ios-bordered"
           textProps={{style: themedStyles(theme).text}}
-          onPress={() => onPressNumberOfChildrenChange('-')}
+          onPress={() => onPressNumberOfGeeseChange('-')}
         />
         <Text style={themedStyles(theme).text}>
-          {i18nextStrings.Statements.IHaveSomeChildren(numberOfChildren)}
+          {i18nextStrings.Statements.ISawGoose(numberOfGeese)}
         </Text>
         <Button
           title="+"
           flavor="ios-bordered"
           textProps={{style: themedStyles(theme).text}}
-          onPress={() => onPressNumberOfChildrenChange('+')}
+          onPress={() => onPressNumberOfGeeseChange('+')}
         />
       </View>
       <View style={themedStyles(theme).horizontalContainer}>

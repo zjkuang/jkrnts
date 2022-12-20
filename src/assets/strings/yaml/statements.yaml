@@ -6,27 +6,27 @@ entries:
       zh_CN: 我来自大陆。
       zh_HK: 我來自香港。
       zh_TW: 我來自台灣。
-  - key: IHaveSomeChildren
+  - key: ISawGoose
     args:
       - name: count
         type: number
     counted: true
     zero:
       translations:
-        en: I have no child.
-        zh_CN: 我没有孩子。
-        zh_HK: 我沒有孩子。
-        zh_TW: 我沒有孩子。
+        en: I saw no goose.
+        zh_CN: 我没有看到鹅。
+        zh_HK: 我沒有看到鵝。
+        zh_TW: 我沒有看到鵝。
     one:
       translations:
-        en: I have a child.
+        en: I saw a goose.
     other:
       translations:
-        en: I have ${count} children.
+        en: I saw ${count} geese.
     pluraless:
       translations:
-        zh_CN: 我有${count}个孩子。
-        zh_HK: 我有${count}個孩子。
-        zh_TW: 我有${count}個孩子。
+        zh_CN: 我看到${count}只鹅。
+        zh_HK: 我看到${count}隻鵝。
+        zh_TW: 我看到${count}隻鵝。
         
       
