@@ -15,7 +15,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "string-gen": "cd src/assets/strings && echo y | npx -y @zjkuang/i18next-wizard && cd ../../..",
+    "string-gen": "cd src/assets/strings && echo y | npx @zjkuang/i18next-wizard && cd ../../..",
     "gen": "yarn string-gen"
   },
   "dependencies": {
