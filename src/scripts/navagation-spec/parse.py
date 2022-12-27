@@ -17,3 +17,5 @@ print('number of rows by `workbook[workbook.columns[0]].count()`:', workbook[wor
 print('(number-of-rows, number-of-columns) by `workbook.shape`:', workbook.shape) # (number-of-rows, number-of-columns)
 print('number of rows by `workbook.shape[0]`:', workbook.shape[0]) # number of rows
 print('number of columns by `workbook.shape[1]`:', workbook.shape[1]) # number of columns
+rowsCount, columnsCount = workbook.shape
+print('rowsCount, columnsCount by `rowsCount, columnsCount = workbook.shape`', rowsCount, columnsCount)
