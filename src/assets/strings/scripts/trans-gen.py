@@ -10,14 +10,26 @@ from tabnanny import check
 import yaml
 from os import listdir, mkdir
 from os.path import isfile, join, isdir
+import argparse
 
+print('trans-gen.py')
 print('yaml version:', yaml.__version__)
+
+default_input_dir = '../yaml'
+default_output_dir = '../generated'
+
+argParser = argparse.ArgumentParser()
+argParser.add_argument('--input', type=str, default=default_input_dir)
+argParser.add_argument('--output', type=str, default=default_output_dir)
+args = argParser.parse_args()
+print('input:', args.input)
+print('output:', args.output)
 
 # g_ -  global variables
 # gc_ -  global constants
 
-g_yamlDir = '../yaml'
-g_generatedDir = '../generated'
+g_yamlDir = args.input
+g_generatedDir = args.output
 g_translationsDir = '/'.join((g_generatedDir, 'translations'))
 g_i18nextStringsFile = '/'.join((g_generatedDir, 'i18nextStrings.ts'))
 
@@ -309,8 +321,8 @@ if __name__ == '__main__':
           uncountedTranslations = {}
         if checkType(uncountedTranslations, dict, f'Parse error: "translations" for an uncounted entry should be a dict.\n{entry}'):
           parseEntryTranslations(uncountedTranslations, False, '', entryArgs, entryKey, group)
-  print(f'g_translations: {g_translations}')
-  print(f'g_i18nextFunctions: {g_i18nextFunctions}')
+  # print(f'g_translations: {g_translations}')
+  # print(f'g_i18nextFunctions: {g_i18nextFunctions}')
 
   # Now generate i18nextStrings.ts
   fout_i18next = open(g_i18nextStringsFile, 'w')
