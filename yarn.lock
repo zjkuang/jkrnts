@@ -5817,11 +5817,6 @@ react-native-screens@^3.15.0:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
 
-react-native-yet-another-utils@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/react-native-yet-another-utils/-/react-native-yet-another-utils-0.2.0.tgz#98425cc5c8f2ac5bb53b59f860297933aeaba8b7"
-  integrity sha512-2KVwOCd+EAEzvSi2qETfe+GAi3aBJWTdYy61A2WYqI9EngyO8nE3kgS0Z/+P2stOdRX+dKzXTNNuutX1UGDVdg==
-
 react-native@0.70.6:
   version "0.70.6"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.70.6.tgz#d692f8b51baffc28e1a8bc5190cdb779de937aa8"

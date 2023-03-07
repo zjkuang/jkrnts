@@ -16,7 +16,8 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "string-gen": "cd src/assets/strings && echo y | npx @zjkuang/i18next-wizard && cd ../../..",
-    "gen": "yarn string-gen"
+    "gen": "yarn string-gen",
+    "postinstall": "yarn gen"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.17.7",
@@ -31,8 +32,7 @@
     "react": "18.1.0",
     "react-native": "0.70.6",
     "react-native-safe-area-context": "^4.3.1",
-    "react-native-screens": "^3.15.0",
-    "react-native-yet-another-utils": "^0.2.0"
+    "react-native-screens": "^3.15.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
