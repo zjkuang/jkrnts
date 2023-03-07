@@ -9,6 +9,7 @@
     "android:sim:uninstall": "adb uninstall com.jkrnts",
     "ios": "react-native run-ios",
     "ios:devices": "xcrun simctl list",
+    "ios:sim:iphone14pro": "react-native run-ios --simulator \"iPhone 14 Pro\"",
     "ios:sim:ipad-9th": "react-native run-ios --simulator \"iPad (9th generation)\"",
     "ios:sim:uninstall": "xcrun simctl uninstall booted org.reactjs.native.example.jkrnts",
     "pod": "pod install --project-directory=ios",
