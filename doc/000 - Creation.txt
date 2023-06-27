@@ -1,6 +1,8 @@
 (1) Create the new R/N app with TypeScript template
 $ npx --ignore-existing react-native init jkrnts --template react-native-template-typescript
 
+(The flag `--ignore-existing` may not be necessary. If there are any weird errors with `cocoapods` installation, try `bundle install` from the root folder of the project.)
+
 (2) Run
 $ cd jkrnts
 
