@@ -43,3 +43,12 @@ to
 sed -i.bak -e 's/\@ac_cv_have_libgflags\@/0/' src/glog/logging.h.in && rm src/glog/logging.h.in.bak
 sed -i.bak -e 's/HAVE_LIB_GFLAGS/HAVE_LIB_GFLAGS_DISABLED/' src/config.h.in && rm src/config.h.in.bak
 ```
+
+(6) `yarn install` failure at `@zjkuang/i18next-wizard`:
+```
+PythonShellError: ModuleNotFoundError: No module named 'yaml'
+```
+In Terminal, run
+```
+pip3 install pyyaml
+```
