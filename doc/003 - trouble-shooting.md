@@ -52,3 +52,16 @@ In Terminal, run
 ```
 pip3 install pyyaml
 ```
+
+(7) `yarn pod` failure
+```
+Could not find cocoapods-1.11.3 in any of the sources
+Run `bundle install` to install missing gems.
+```
+In Terminal,
+```
+cd ios
+bundle install
+cd ..
+yarn pod
+```
